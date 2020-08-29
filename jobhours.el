@@ -37,6 +37,15 @@ Note that the 'org2tc' utility must be on your PATH."
   :type '(repeat file)
   :group 'jobhours)
 
+(defvar jobhours-display-total-string nil
+  "If non-nil then show both the stats for the current day and the current
+month periods.")
+
+(defun jobhours-toggle-display-format ()
+  "Toggle between the display of short or long format jobhours-string."
+  (interactive)
+  (setq jobhours-display-total-string (not jobhours-display-total-string)))
+
 (defun jobhours-get-string (&optional show-all)
   (with-temp-buffer
     (apply #'call-process "jobhours" nil t nil
@@ -85,7 +94,8 @@ Note that the 'org2tc' utility must be on your PATH."
 
 (defun jobhours-update-string ()
   (interactive)
-  (setq jobhours-string (jobhours-get-string)))
+  (setq jobhours-string
+        (jobhours-get-string jobhours-display-total-string)))
 
 (defun jobhours-setup-modeline ()
   (run-at-time 0 300 #'jobhours-update-string)
