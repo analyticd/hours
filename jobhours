@@ -5,12 +5,12 @@ if [[ ! -f "$1" ]]; then
     exit 1
 fi
 
-if [[ ! -x "$(which jq)" ]]; then
+if [[ ! -x "$(command -v jq)" ]]; then
     echo "Error: jobhours requires the 'jq' utility to be installed"
     exit 1
 fi
 
-if [[ ! -x "$(which org2tc)" ]]; then
+if [[ ! -x "$(command -v org2tc)" ]]; then
     echo "Error: jobhours requires the 'org2tc' utility to be installed"
     exit 1
 fi
