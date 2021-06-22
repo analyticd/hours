@@ -4,7 +4,7 @@
 module Work (workIntervals, timeZoneWork) where
 
 import Control.Arrow ((&&&))
-import Data.Time
+import Data.Time hiding (calendarYear, calendarMonth, calendarDay, DayOfWeek ( Monday ), DayOfWeek ( Friday ), DayOfWeek( Sunday ))
 import Data.Time.Recurrence as R
 import Hours.Budget (Interval(..))
 import Hours.Input (WorkDay(..))
