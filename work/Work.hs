@@ -25,7 +25,7 @@ workHours _ Weekend    = 0
 workHours _ Holiday    = 0
 workHours _ OffFriday  = 0
 workHours _ HalfFriday = fromHours 1000
-workHours _ RegularDay = fromHours 8
+workHours _ RegularDay = fromHours 4 -- 8
 
 monthlyStart :: UTCTime
 monthlyStart = zonedTimeToUTC (mkZonedTime timeZoneWork 2018 08 1 9 0)
@@ -51,5 +51,6 @@ workIntervals mine moment =
   where
     (beg, fin) = workRange moment
 
-    go b | b `elem` holidayTable = [ Interval b (addHours 8 b) Holiday    ]
-         | otherwise        = [ Interval b (addHours 8 b) RegularDay ]
+    -- was 8 rather than 4
+    go b | b `elem` holidayTable = [ Interval b (addHours 4 b) Holiday    ]
+         | otherwise        = [ Interval b (addHours 4 b) RegularDay ]
