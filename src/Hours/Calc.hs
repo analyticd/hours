@@ -26,8 +26,8 @@ progressColor = dimColor darkgrey red green
 textColor :: (Ord u, Num u) => Bool -> Budget t u a -> Colour Double
 textColor loggedIn b
     | loggedIn, bRealThisRemaining b < 0 = cyan
-    | loggedIn = yellow
-    | otherwise = gray
+    | loggedIn = black -- yellow
+    | otherwise = black -- gray
 
 data Budget t u a = Budget
     { bStart                :: t
